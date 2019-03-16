@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-# osx.sh — https://github.com/cassianomon/dotfiles
-
 echo "========================================="
 echo "Settings MacOS Settings as I want them..."
 echo "========================================="

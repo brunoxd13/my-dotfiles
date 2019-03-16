@@ -30,9 +30,3 @@ fi
 
 ln -s -F -i "$DOTFILES_ROOT/hyper/.hyper.js" "$HOME/.hyper.js"
 echo ".hyper.js file added to home"
-
-
-
-
-
-
