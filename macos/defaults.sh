@@ -24,10 +24,10 @@ sudo chown "${UID}" ~/Library/Preferences
 ###############################################################################
 
 # Set computer name (as done via System Preferences → Sharing)
-sudo scutil --set ComputerName "MACHINE"
-sudo scutil --set HostName "MACHINE"
-sudo scutil --set LocalHostName "MACHINE"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "MACHINE"
+sudo scutil --set ComputerName "Bruno"
+sudo scutil --set HostName "Bruno"
+sudo scutil --set LocalHostName "Bruno"
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "Bruno"
 
 # Set standby delay to 24 hours (default is 1 hour)
 # sudo pmset -a standbydelay 86400
@@ -211,7 +211,7 @@ defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 #defaults write com.apple.screensaver askForPasswordDelay -int 0
 
 # Save screenshots to the Downloads
-defaults write com.apple.screencapture location -string "$HOME/Downloads/Screenshots"
+defaults write com.apple.screencapture location -string "$HOME/Screenshots"
 
 # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
 defaults write com.apple.screencapture type -string "png"
@@ -238,7 +238,7 @@ defaults write com.apple.finder DisableAllAnimations -bool true
 # Set Desktop as the default location for new Finder windows
 # For other paths, use `PfLo` and `file:///full/path/here/`
 defaults write com.apple.finder NewWindowTarget -string "PfDe"
-defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Desktop/"
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
 
 # Show icons for servers, and removable media on the desktop
 defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
@@ -388,9 +388,9 @@ defaults write com.apple.dock dashboard-in-overlay -bool true
 defaults write com.apple.dock mru-spaces -bool false
 
 # Remove the auto-hiding Dock delay
-defaults write com.apple.dock autohide-delay -float 0
+# defaults write com.apple.dock autohide-delay -float 0
 # Remove the animation when hiding/showing the Dock
-defaults write com.apple.dock autohide-time-modifier -float 0
+# defaults write com.apple.dock autohide-time-modifier -float 0
 
 # Automatically hide and show the Dock
 defaults write com.apple.dock autohide -bool true
