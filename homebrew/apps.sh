@@ -1,12 +1,8 @@
-# Everyone has different preferences of apps.
-# This is a list of stuff I usually install
-
 brew_cask_apps=(
     github
     gitkraken
     google-chrome
     google-backup-and-sync
-    hyper
     itsycal
     skype
     slack
@@ -36,12 +32,10 @@ mas_apps=(
     409201541
     #Keynote
     409183694
-    #Xcode
-    497799835
     #Numbers
     409203825
-    #Unsplash Wallpapers
-    1284863847
+    #Xcode
+    497799835
 )
 
 echo "Installing brew apps..."
