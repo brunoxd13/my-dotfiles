@@ -1,4 +1,5 @@
 brew_cask_apps=(
+    android-studio
     github
     gitkraken
     google-chrome
