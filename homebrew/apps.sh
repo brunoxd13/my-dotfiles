@@ -12,6 +12,10 @@ brew_cask_apps=(
     transmission
     visual-studio-code
     vlc
+    alfred
+    spectacle
+    onedrive
+    docker
 )
 
 brew_apps=(
