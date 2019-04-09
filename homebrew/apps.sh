@@ -24,6 +24,7 @@ brew_apps=(
     yarn
     zsh
     zsh-completions
+    zsh-autosuggestions
 )
 
 brew_cask_fonts=(
