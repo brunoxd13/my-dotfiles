@@ -6,9 +6,9 @@ export PATH="$PATH:$HOME/.config/yarn/global/node_modules/.bin"
 ZSH_THEME="robbyrussell"
 
 plugins=(
-    git,
-    node,
-    npm,
+    git
+    node
+    npm
     osx
 )
 
