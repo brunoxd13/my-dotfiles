@@ -69,7 +69,6 @@ alias spotoff="sudo mdutil -a -i off"
 # Enable Spotlight
 alias spoton="sudo mdutil -a -i on"
 
-
 # Kill all the tabs in Chrome to free up memory
 # [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
 alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
@@ -77,6 +76,15 @@ alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v exten
 
 # Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
-alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
-cls
+### Added by Zplugin's installer
+source $HOME/.zplugin/bin/zplugin.zsh
+autoload -Uz _zplugin
+(( ${+_comps} )) && _comps[zplugin]=_zplugin
+### End of Zplugin's installer chunk
+
+zplugin light zsh-users/zsh-autosuggestions
+zplugin light zsh-users/zsh-completions
+zplugin light zdharma/fast-syntax-highlighting
+
+clear
