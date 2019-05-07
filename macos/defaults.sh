@@ -141,7 +141,7 @@ defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 ###############################################################################
 
 # Disable hibernation (speeds up entering sleep mode)
-sudo pmset -a hibernatemode 0
+# sudo pmset -a hibernatemode 0
 
 # Remove the sleep image file to save disk space
 sudo rm /private/var/vm/sleepimage
@@ -151,7 +151,7 @@ sudo touch /private/var/vm/sleepimage
 sudo chflags uchg /private/var/vm/sleepimage
 
 # Disable the sudden motion sensor as it’s not useful for SSDs
-sudo pmset -a sms 0
+# sudo pmset -a sms 0
 
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
