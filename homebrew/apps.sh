@@ -16,6 +16,10 @@ brew_cask_apps=(
     spectacle
     onedrive
     docker
+    sublime-text
+    reactotron
+    vanilla
+    notion
 )
 
 brew_apps=(
