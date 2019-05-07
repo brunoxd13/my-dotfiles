@@ -21,12 +21,3 @@ fi
 
 ln -s -F -i "$DOTFILES_ROOT/zsh/.zshrc" "$HOME/.zshrc"
 echo ".zshrc file added to home"
-
-echo "Backing up an existing .hyper.js config"
-# Backup an existing .hyper.js if any
-if [[ -f "$HOME/.hyper.js" ]]; then
-    mv -v "$HOME/.hyper.js" "$HOME/.hyper.js.bak"
-fi
-
-ln -s -F -i "$DOTFILES_ROOT/hyper/.hyper.js" "$HOME/.hyper.js"
-echo ".hyper.js file added to home"
