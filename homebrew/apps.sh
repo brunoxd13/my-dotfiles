@@ -20,6 +20,9 @@ brew_cask_apps=(
     reactotron
     vanilla
     notion
+    macmediakeyforwarder
+    copyclip
+    cheatsheet
 )
 
 brew_apps=(
@@ -50,6 +53,8 @@ mas_apps=(
     1278508951
     #Lightshot Screenshot
     526298438
+    #Amphetamine
+    937984704  
 )
 
 echo "Installing brew apps..."
