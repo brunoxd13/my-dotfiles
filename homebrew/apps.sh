@@ -21,7 +21,6 @@ brew_cask_apps=(
     vanilla
     notion
     macmediakeyforwarder
-    copyclip
     cheatsheet
 )
 
@@ -54,7 +53,9 @@ mas_apps=(
     #Lightshot Screenshot
     526298438
     #Amphetamine
-    937984704  
+    937984704
+    #CopyClip - Clipboard History
+    595191960
 )
 
 echo "Installing brew apps..."
