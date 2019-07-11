@@ -22,6 +22,7 @@ brew_cask_apps=(
     notion
     macmediakeyforwarder
     cheatsheet
+    insomnia
 )
 
 brew_apps=(
