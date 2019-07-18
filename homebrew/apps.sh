@@ -23,9 +23,11 @@ brew_cask_apps=(
     macmediakeyforwarder
     cheatsheet
     insomnia
+    spotmenu
 )
 
 brew_apps=(
+    ffsend
     mas
     node
     yarn
