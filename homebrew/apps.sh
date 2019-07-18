@@ -1,5 +1,5 @@
 brew_cask_apps=(
-    android-studio
+    # android-studio
     github
     gitkraken
     google-chrome
@@ -24,6 +24,7 @@ brew_cask_apps=(
     cheatsheet
     insomnia
     spotmenu
+    brave-browser
 )
 
 brew_apps=(
