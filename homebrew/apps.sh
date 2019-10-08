@@ -5,10 +5,10 @@ brew_cask_apps=(
     google-chrome
     google-backup-and-sync
     itsycal
-    skype
+    # skype
     slack
     spotify
-    the-unarchiver
+    # the-unarchiver
     transmission
     visual-studio-code
     vlc
@@ -18,18 +18,35 @@ brew_cask_apps=(
     docker
     sublime-text
     reactotron
-    vanilla
+    # vanilla
+    dozer
     notion
     macmediakeyforwarder
     cheatsheet
     insomnia
     spotmenu
     brave-browser
+    tunnelblick
+    ngrok
+    dash
+    muzzle
+    authy
+    cloudapp
+    https://raw.githubusercontent.com/Mortennn/FiScript/master/fiscript.rb
+    keka
+    brooklyn
+    # caprine
+    # shifty
+    mark-text
 )
 
 brew_apps=(
+    # tokei 
+    # m-cli
+    # shpotify
     ffsend
     mas
+    nvm
     node
     yarn
     zsh
@@ -55,7 +72,7 @@ mas_apps=(
     #Trello
     1278508951
     #Lightshot Screenshot
-    526298438
+    # 526298438
     #Amphetamine
     937984704
     #CopyClip - Clipboard History
