@@ -2,7 +2,7 @@ export ZSH=$HOME/.oh-my-zsh
 
 export PATH="/usr/local/bin:$PATH"
 export PATH="$PATH:$HOME/.config/yarn/global/node_modules/.bin"
-# export PATH="$PATH:$HOME/development/flutter/bin"
+
 
 ZSH_THEME="robbyrussell"
 
@@ -11,6 +11,7 @@ plugins=(
     node
     npm
     osx
+    kubectl
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -53,7 +54,7 @@ alias ys="yarn start"
 alias rm-node="rm -rf node_modules && rm -rf package-lock.json && rm -rf yarn.lock"
 alias reinstall="rm-node && yarn install"
 alias ip="netstat -rn | grep default"
-alias ssh="code ~/.ssh"
+alias ssh-config="code ~/.ssh"
 
 # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g'
@@ -75,12 +76,15 @@ alias spoton="sudo mdutil -a -i on"
 # [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
 alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
 
-alias work="open -a 'Brave Browser' --args --make-default-browser && git config --global user.name 'Bruno Russi Lautenschlager' && git config --global user.email bruno.lautenschlager@mandic.net.br"
-alias home="open -a 'Google Chrome' --args --make-default-browser && git config --global user.name 'Bruno Russi Lautenschlager' && git config --global user.email brunoxd13@gmail.com"
+alias work-profile="open -a 'Firefox' --args --make-default-browser && git config --global user.name 'Bruno Russi Lautenschlager' && git config --global user.email bruno.lautenschlager@mandic.net.br"
+alias home-profile="open -a 'Google Chrome' --args --make-default-browser && git config --global user.name 'Bruno Russi Lautenschlager' && git config --global user.email brunoxd13@gmail.com"
 
 # Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+
+# Alias for https://termbin.com/
+alias tb="nc termbin.com 9999"
 
 ### Added by Zplugin's installer
 source $HOME/.zplugin/bin/zplugin.zsh
