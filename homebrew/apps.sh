@@ -1,7 +1,6 @@
 brew_cask_apps=(
     # android-studio
-    github
-    gitkraken
+    # github
     google-chrome
     google-backup-and-sync
     itsycal
@@ -38,6 +37,9 @@ brew_cask_apps=(
     # caprine
     # shifty
     mark-text
+    asciinema
+    fork
+    iterm2
 )
 
 brew_apps=(
@@ -52,6 +54,15 @@ brew_apps=(
     zsh
     zsh-completions
     zsh-autosuggestions
+    ansible
+    kubectl
+    terraform
+    awscli
+    watch
+    minikube
+    aws-iam-authenticator
+    telnet
+    bat
 )
 
 brew_cask_fonts=(
@@ -68,9 +79,9 @@ mas_apps=(
     #Numbers
     409203825
     #Xcode
-    497799835
+    # 497799835
     #Trello
-    1278508951
+    # 1278508951
     #Lightshot Screenshot
     # 526298438
     #Amphetamine
