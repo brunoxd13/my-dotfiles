@@ -3,7 +3,7 @@
 
 if test ! $(which brew); then
     echo "Installing homebrew"
-    ruby -e "$(curl -fsSl https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
 # Update homebrew recipes
@@ -13,7 +13,7 @@ brew cleanup
 
 # homebrew-cask
 echo "Installing homebrew-cask..."
-brew tap caskroom/cask
+brew tap homebrew/cask-cask
 brew tap homebrew/cask
 
 # homebrew-cask-fonts
