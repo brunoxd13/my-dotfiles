@@ -13,7 +13,6 @@ brew cleanup
 
 # homebrew-cask
 echo "Installing homebrew-cask..."
-brew tap homebrew/cask-cask
 brew tap homebrew/cask
 
 # homebrew-cask-fonts

@@ -13,6 +13,7 @@ brew_cask_apps=(
     vlc
     alfred
     spectacle
+    pycharm-ce
     onedrive
     docker
     sublime-text
@@ -31,7 +32,7 @@ brew_cask_apps=(
     muzzle
     authy
     # cloudapp
-    https://raw.githubusercontent.com/Mortennn/FiScript/master/fiscript.rb
+    # https://raw.githubusercontent.com/Mortennn/FiScript/master/fiscript.rb
     keka
     brooklyn
     # caprine
@@ -43,6 +44,8 @@ brew_cask_apps=(
     discord
     whatsapp
     homebrew/cask-drivers/logitech-options
+    zoom
+    telegram-desktop
 )
 
 brew_apps=(
@@ -103,10 +106,10 @@ echo "Installing brew apps..."
 brew install ${brew_apps[@]}
 
 echo "Installing some brew cask apps..."
-brew cask install ${brew_cask_apps[@]}
+brew install --cask ${brew_cask_apps[@]}
 
 echo "Installing some brew cask fonts..."
-brew cask install ${brew_cask_fonts[@]}
+brew install --cask ${brew_cask_fonts[@]}
 
 brew cleanup
 
