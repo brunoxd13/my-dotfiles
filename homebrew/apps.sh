@@ -46,12 +46,14 @@ brew_cask_apps=(
     homebrew/cask-drivers/logitech-options
     zoom
     telegram-desktop
+    ocenaudio
 )
 
 brew_apps=(
-    # tokei 
-    # m-cli
-    # shpotify
+    # tokei
+    noisebuddy
+    m-cli
+    shpotify
     ffsend
     mas
     nvm
@@ -60,17 +62,23 @@ brew_apps=(
     zsh
     zsh-completions
     zsh-autosuggestions
+    telnet
+    bat
+    # terraform
+    # tfenv
     ansible
     kubectl
-    # terraform
     awscli
     watch
     minikube
     aws-iam-authenticator
-    telnet
-    bat
+    terragrunt
     terraform-docs
-    tfenv
+    tflint
+    tfsec
+    asdf
+    checkov
+    cookiecutter
 )
 
 brew_cask_fonts=(

@@ -9,7 +9,7 @@ export ZSH=$HOME/.oh-my-zsh
 
 export PATH="/usr/local/bin:$PATH"
 export PATH="$PATH:$HOME/.config/yarn/global/node_modules/.bin"
-
+export PATH="$PATH:`python3 -m site --user-base`/bin"
 
 ZSH_THEME="robbyrussell"
 
@@ -27,6 +27,14 @@ export UPDATE_ZSH_DAYS=1
 
 function mkd() {
     mkdir -p "$@" && cd "$@"
+}
+
+function i-login() {
+    ifood-aws-login -r ifood-"$@":Administrator_Access
+}
+
+function ifood-login() {
+    ifood-aws-login -r "$@":Administrator_Access
 }
 
 ENABLE_CORRECTION="true"
@@ -93,6 +101,9 @@ alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resourc
 # Alias for https://termbin.com/
 alias tb="nc termbin.com 9999"
 
+alias tf="terraform"
+alias tg="terragrunt"
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -135,3 +146,11 @@ zplugin ice depth=1; zplugin light romkatv/powerlevel10k
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+. /usr/local/opt/asdf/asdf.sh
+
+#### FIG ENV VARIABLES ####
+[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
+#### END FIG ENV VARIABLES ####
+
+
