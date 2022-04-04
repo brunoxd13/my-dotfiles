@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 brew_cask_apps=(
     # android-studio
     # github
@@ -11,8 +13,7 @@ brew_cask_apps=(
     transmission
     visual-studio-code
     vlc
-    alfred
-    spectacle
+    # alfred
     pycharm-ce
     onedrive
     docker
@@ -47,6 +48,18 @@ brew_cask_apps=(
     zoom
     telegram-desktop
     ocenaudio
+    stats
+    # querypie
+    # goland
+    # lastpass
+    lens
+    raycast
+    # chef-workstation
+    fig
+    cron
+    keybase
+    # opera-gx
+    # steam
 )
 
 brew_apps=(
@@ -58,6 +71,9 @@ brew_apps=(
     mas
     nvm
     node
+    golang
+    elixir
+    rust
     yarn
     zsh
     zsh-completions
@@ -72,19 +88,28 @@ brew_apps=(
     watch
     minikube
     aws-iam-authenticator
-    terragrunt
-    terraform-docs
-    tflint
-    tfsec
+    # terragrunt
+    # terraform-docs
+    # tflint
+    # tfsec
     asdf
     checkov
     cookiecutter
+    rectangle
+    jq
+    vault
+    agrinman/tap/tunnelto
+    bash
+    gnu-sed
+    grep
+    vim
 )
 
 brew_cask_fonts=(
     font-fira-code
     font-meslo-for-powerline
     font-meslo-lg
+    font-ibm-plex
 )
 
 mas_apps=(
@@ -107,22 +132,44 @@ mas_apps=(
     #Unsplash Wallpapers
     1284863847
     #RunCat
-    1429033973  
+    1429033973
+    #Meeter for Zoom, Teams & Co
+    # 1510445899
+    # Dropover - Easier Drag & Drop
+    1355679052
+    # Charmstone (0.12)
+    1563735522
+    # Spark - Email App da Readdle
+    1176895641
+
+)
+
+asdf_apps=(
+    terraform
+    terraform-docs
+    terraform-validator
+    terragrunt
+    tflint
+    tfsec
+    shellcheck
 )
 
 echo "Installing brew apps..."
-brew install ${brew_apps[@]}
+brew install "${brew_apps[@]}"
 
 echo "Installing some brew cask apps..."
-brew install --cask ${brew_cask_apps[@]}
+brew install --cask "${brew_cask_apps[@]}"
 
 echo "Installing some brew cask fonts..."
-brew install --cask ${brew_cask_fonts[@]}
+brew install --cask "${brew_cask_fonts[@]}"
+
+echo "Installing some asdf apps..."
+# asdf plugin-add "${asdf_apps[@]}"
 
 brew cleanup
 
 echo "Installing mac applications..."
-mas install ${mas_apps[@]}
+mas install "${mas_apps[@]}"
 
 echo "Installing oh-my-zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"

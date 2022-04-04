@@ -1,24 +1,46 @@
+# Fig pre block. Keep at the top of this file.
+export PATH="${PATH}:${HOME}/.local/bin"
+eval "$(fig init zsh pre)"
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
+
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 export ZSH=$HOME/.oh-my-zsh
 
+# Default grep set to gnu grep
+export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+
 export PATH="/usr/local/bin:$PATH"
 export PATH="$PATH:$HOME/.config/yarn/global/node_modules/.bin"
 export PATH="$PATH:`python3 -m site --user-base`/bin"
+export PATH="$PATH:/usr/local/opt/gnu-sed/libexec/gnubin"
 
-ZSH_THEME="robbyrussell"
+# Golang env vars
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOROOT/bin
+export GO111MODULE=off
+
+# ZSH_THEME="robbyrussell"
 
 plugins=(
+    zsh-prompt-benchmark
     git
     node
     npm
-    osx
+    macos
     kubectl
+    aws
+    asdf 
+    virtualenv 
+    virtualenvwrapper
+    ssh-agent
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -70,6 +92,8 @@ alias rm-node="rm -rf node_modules && rm -rf package-lock.json && rm -rf yarn.lo
 alias reinstall="rm-node && yarn install"
 alias ip="netstat -rn | grep default"
 alias ssh-config="code ~/.ssh"
+alias tf="terraform"
+alias tg="terragrunt"
 
 # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g'
@@ -91,8 +115,8 @@ alias spoton="sudo mdutil -a -i on"
 # [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
 alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
 
-alias work-profile="git config --global user.name 'Bruno Russi Lautenschlager' && git config --global user.email bruno.lautenschlager@mandic.net.br"
-alias home-profile="git config --global user.name 'Bruno Russi Lautenschlager' && git config --global user.email brunoxd13@gmail.com"
+alias work-profile="open -a 'Google Chrome' --args --make-default-browser && git config --global user.name 'Bruno Russi Lautenschlager' && git config --global user.email blautens@redhat.com"
+alias home-profile="open -a 'Opera GX' --args --make-default-browser && git config --global user.name 'Bruno Russi Lautenschlager' && git config --global user.email brunoxd13@gmail.com"
 
 # Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
@@ -101,20 +125,10 @@ alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resourc
 # Alias for https://termbin.com/
 alias tb="nc termbin.com 9999"
 
-alias tf="terraform"
-alias tg="terragrunt"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-### End of Zinit's installer chunk
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Applications/google-cloud-sdk/path.zsh.inc' ]; then . '/Applications/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Applications/google-cloud-sdk/completion.zsh.inc' ]; then . '/Applications/google-cloud-sdk/completion.zsh.inc'; fi
-### End of Zinit's installer chunk
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
@@ -147,10 +161,13 @@ zplugin ice depth=1; zplugin light romkatv/powerlevel10k
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-. /usr/local/opt/asdf/asdf.sh
+# . /usr/local/opt/asdf/libexec/asdf.sh
 
-#### FIG ENV VARIABLES ####
-[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
-#### END FIG ENV VARIABLES ####
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/vault vault
+
+# Fig post block. Keep at the bottom of this file.
+eval "$(fig init zsh post)"
 
