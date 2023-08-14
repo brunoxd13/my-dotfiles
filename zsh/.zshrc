@@ -1,36 +1,57 @@
 # Fig pre block. Keep at the top of this file.
-export PATH="${PATH}:${HOME}/.local/bin"
-eval "$(fig init zsh pre)"
-
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# P10K - Load
+source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
+
+#### ENV VARIABLES ####
 export ZSH=$HOME/.oh-my-zsh
 
+export GPG_TTY=$(tty)
+
 # Default grep set to gnu grep
-export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 
 export PATH="/usr/local/bin:$PATH"
 export PATH="$PATH:$HOME/.config/yarn/global/node_modules/.bin"
 export PATH="$PATH:`python3 -m site --user-base`/bin"
-export PATH="$PATH:/usr/local/opt/gnu-sed/libexec/gnubin"
 
 # Golang env vars
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
-export GOROOT=/usr/local/opt/go/libexec
-export PATH=$PATH:$GOROOT/bin
-export GO111MODULE=off
+# export GOPATH=$HOME/go
+# export PATH=$PATH:$GOPATH/bin
+# export GOROOT=/usr/local/opt/go/libexec
+# export PATH=$PATH:$GOROOT/bin
+# export GO111MODULE=off
+# export GOROOT="$(brew --prefix golang)/libexec"
 
-# ZSH_THEME="robbyrussell"
+# NVM Configs
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# autoload -U +X bashcompinit && bashcompinit
+# complete -o nospace -C /usr/local/bin/vault vault
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+
+#######################
 
 plugins=(
-    zsh-prompt-benchmark
+    asdf
+    # zsh-prompt-benchmark
     git
     node
     npm
@@ -39,13 +60,23 @@ plugins=(
     aws
     asdf 
     virtualenv 
-    virtualenvwrapper
-    ssh-agent
+    # virtualenvwrapper
+    # ssh-agent
 )
 
 source $ZSH/oh-my-zsh.sh
-
 export UPDATE_ZSH_DAYS=1
+export ENABLE_CORRECTION="false"
+export COMPLETION_WAITING_DOTS="true"
+
+# On MacM1 use roseta to run terraform and hashicorp tools with asdf
+# Ref: https://github.com/asdf-community/asdf-hashicorp/issues/34
+export ASDF_HASHICORP_OVERWRITE_ARCH=amd64
+
+# Add support to clone images based on AMD64 on Mac M1
+export DOCKER_DEFAULT_PLATFORM=linux/x86_64/v8
+
+##########################################################
 
 function mkd() {
     mkdir -p "$@" && cd "$@"
@@ -58,9 +89,6 @@ function i-login() {
 function ifood-login() {
     ifood-aws-login -r "$@":Administrator_Access
 }
-
-ENABLE_CORRECTION="true"
-COMPLETION_WAITING_DOTS="true"
 
 ###########
 # ALIASES #
@@ -126,48 +154,36 @@ alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resourc
 alias tb="nc termbin.com 9999"
 
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
+
 
 ### Added by Zinit's installer
-if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
-        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-        print -P "%F{160}▓▒░ The clone has failed.%f%b"
-fi
+# if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+#     print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+#     command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+#     command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+#         print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+#         print -P "%F{160}▓▒░ The clone has failed.%f%b"
+# fi
 
-source "$HOME/.zinit/bin/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
+# source "$HOME/.zinit/bin/zinit.zsh"
+# autoload -Uz _zinit
+# (( ${+_comps} )) && _comps[zinit]=_zinit
 
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
-zinit light-mode for \
-    zinit-zsh/z-a-as-monitor \
-    zinit-zsh/z-a-patch-dl \
-    zinit-zsh/z-a-bin-gem-node
+# zinit light-mode for \
+#     zinit-zsh/z-a-as-monitor \
+#     zinit-zsh/z-a-patch-dl \
+#     zinit-zsh/z-a-bin-gem-node
 
 ### End of Zinit's installer chunk
 
-
-zplugin light zsh-users/zsh-autosuggestions
-zplugin light zsh-users/zsh-completions
-zplugin light zdharma/fast-syntax-highlighting
-zplugin ice depth=1; zplugin light romkatv/powerlevel10k
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# . /usr/local/opt/asdf/libexec/asdf.sh
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/bin/vault vault
+# zplugin light zsh-users/zsh-autosuggestions
+# zplugin light zsh-users/zsh-completions
+# zplugin light zdharma/fast-syntax-highlighting
+# zplugin ice depth=1; zplugin light romkatv/powerlevel10k
 
 # Fig post block. Keep at the bottom of this file.
-eval "$(fig init zsh post)"
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
+export PATH=/Users/bruno.lautenschlager/Library/Python/3.11/bin:${PATH}
 

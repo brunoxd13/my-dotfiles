@@ -44,7 +44,6 @@ brew_cask_apps=(
     iterm2
     discord
     whatsapp
-    homebrew/cask-drivers/logitech-options
     zoom
     telegram-desktop
     ocenaudio
@@ -60,6 +59,10 @@ brew_cask_apps=(
     keybase
     # opera-gx
     # steam
+    alt-tab
+    warp
+    obs
+    logi-options-plus
 )
 
 brew_apps=(
@@ -103,6 +106,9 @@ brew_apps=(
     gnu-sed
     grep
     vim
+    bitwarden-cli
+    romkatv/powerlevel10k/powerlevel10k
+    fzf
 )
 
 brew_cask_fonts=(
@@ -110,37 +116,25 @@ brew_cask_fonts=(
     font-meslo-for-powerline
     font-meslo-lg
     font-ibm-plex
+    font-meslo-lg-nerd-font
 )
 
 mas_apps=(
-    #Pages
-    409201541
-    #Keynote
-    409183694
-    #Numbers
-    # 409203825
-    #Xcode
-    # 497799835
-    #Trello
-    # 1278508951
-    #Lightshot Screenshot
-    # 526298438
-    #Amphetamine
-    937984704
-    #CopyClip - Clipboard History
-    595191960
-    #Unsplash Wallpapers
-    1284863847
-    #RunCat
-    1429033973
-    #Meeter for Zoom, Teams & Co
-    # 1510445899
-    # Dropover - Easier Drag & Drop
-    1355679052
-    # Charmstone (0.12)
-    1563735522
-    # Spark - Email App da Readdle
-    1176895641
+    # 409203825 # Numbers
+    # 497799835 # Xcode
+    # 1278508951 # Trello
+    # 526298438 # Lightshot Screenshot
+    # 1510445899 # Meeter for Zoom, Teams & Co
+    409201541 #Pages
+    409183694 #Keynote
+    937984704 #Amphetamine
+    595191960 #CopyClip - Clipboard History
+    1284863847 #Unsplash Wallpapers
+    1429033973 #RunCat
+    1355679052 # Dropover - Easier Drag & Drop
+    1563735522 # Charmstone (0.12)
+    1176895641 # Spark - Email App da Readdle
+    1487937127 # Craft - Docs and Notes Editor
 
 )
 
@@ -172,8 +166,10 @@ echo "Installing mac applications..."
 mas install "${mas_apps[@]}"
 
 echo "Installing oh-my-zsh"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+chsh -s "$(which zsh)"
+
+$"(brew --prefix)"/opt/fzf/install
+
 
 echo "It's done!"

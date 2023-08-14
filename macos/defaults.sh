@@ -211,6 +211,7 @@ defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 #defaults write com.apple.screensaver askForPasswordDelay -int 0
 
 # Save screenshots on ~/Pictures/Screenshots
+mkdir "${HOME}/Pictures/Screenshots"
 defaults write com.apple.screencapture location "${HOME}/Pictures/Screenshots"
 
 # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
